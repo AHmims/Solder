@@ -6,6 +6,7 @@ import {ScrapResult} from "./types/scrapResult.type";
 const fs = require('fs-extra');
 import config from '../../solder.config';
 import {scrap_SSR_page} from "./scraper";
+import {json} from "stream/consumers";
 
 async function getQueuedItems(extensions: Array<Extension>): Promise<Array<Queue>> {
     let queuedItems: Array<Queue> = [];
@@ -53,7 +54,7 @@ async function runQueue(queuedItems: Array<Queue>): Promise<void> {
                 let jobScrapResult: Array<ScrapResult> = [];
                 // @ts-ignore
                 const jobConfig: item = availableJobs[jobName];
-                switch (jobConfig.scraper) {
+                switch (jobConfig.scrapMethod) {
                     case "SSR":
                         // @ts-ignore
                         jobScrapResult = await scrap_SSR_page(itemJob[jobName], jobConfig.fields);
@@ -71,16 +72,16 @@ async function runQueue(queuedItems: Array<Queue>): Promise<void> {
                 queuedItemResult.push(jobScrapResult);
             }
 
-            queueCount++;
             result.push(
                 {
                     queue: `queue-${queueCount}`,
                     result: queuedItemResult
                 }
             );
+            queueCount++;
         }
 
-        console.log(result);
+        console.log(JSON.stringify(result));
     } catch (e) {
         console.error(e);
     }
