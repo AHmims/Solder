@@ -1,8 +1,10 @@
-import {Extension} from "./extension.type";
+import {Extension} from "./types/extension.type";
 
 const fs = require('fs-extra');
 import config from '../../solder.config';
 import * as path from "path";
+import {extensionConfig} from "./types/extensionConfig.type";
+import {item} from "./types/item.type";
 
 export async function getExtensions(): Promise<Array<Extension | null>> {
     let extensions: Array<Extension | null> = [];
@@ -12,7 +14,10 @@ export async function getExtensions(): Promise<Array<Extension | null>> {
 
         for (const module of modules) {
             const extension = await fetchModule(module);
-            extensions.push(extension);
+
+            if (extension !== null) {
+                extensions.push(extension);
+            }
         }
 
     } catch (e) {
@@ -26,12 +31,7 @@ const fetchModule = async (fileName: string): Promise<Extension | null> => {
     let extension: Extension | null = null;
 
     try {
-        const jsonModule = await fs.readJSON(path.join(config.MODULES_DIRECTORY, fileName));
-
-        extension = {
-            name: jsonModule.name,
-            baseUrl: jsonModule.baseUrl
-        }
+        extension = await fs.readJSON(path.join(config.MODULES_DIRECTORY, fileName));
     } catch (e) {
         console.error(e);
     }

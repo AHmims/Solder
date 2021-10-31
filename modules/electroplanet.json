@@ -1,4 +1,22 @@
 {
   "name": "Electroplanet",
-  "baseUrl": "https://www.electroplanet.ma"
+  "description": "Electroplanet is a moroccan company specialised in selling different products such as appliances, TV, Hifi and Multimedia.",
+  "baseUrl": "https://www.electroplanet.ma",
+  "config": {
+    "productPage": {
+      "scraper": "SSR",
+      "fields": [
+        {
+          "type": "class",
+          "key": "name",
+          "value": ".detail-product-info .page-title"
+        },
+        {
+          "type": "class",
+          "key": "price",
+          "value": ".detail-product-info .price-wrapper"
+        }
+      ]
+    }
+  }
 }
