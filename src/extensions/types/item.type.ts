@@ -1,7 +1,7 @@
-import {scraper} from "./scraper.type";
+import {scrapMethod} from "./scrapMethod.type";
 import {field} from "./field.type";
 
 export interface item {
-    scraper: scraper,
+    scraper: scrapMethod,
     fields: Array<field>
 }

@@ -1,5 +1,13 @@
 import * as manager from './extensions/manager';
+import * as queue from './worker/queue';
 
 (async () => {
-    console.log(await manager.getExtensions());
+    const extensions = await manager.getExtensions();
+
+    console.log(extensions)
+
+    const queuedData = await queue.getQueuedItems(extensions);
+
+    console.log(queuedData)
+
 })();
