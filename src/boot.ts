@@ -1,5 +1,5 @@
-import * as handler from './extensions/handler';
+import * as manager from './extensions/manager';
 
 (async () => {
-    console.log(await handler.getExtensions());
+    console.log(await manager.getExtensions());
 })();
