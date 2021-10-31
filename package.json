@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watch": "babel --watch src --out-dir out --extensions '.ts,.tsx'",
-    "build": "babel src --out-dir out --extensions '.ts,.tsx'",
+    "watch": "babel --watch src --out-dir out --extensions '.ts'",
+    "build": "babel src --out-dir out --extensions '.ts'",
     "tsc": "tsc",
     "start": "node out/boot.js"
   },
