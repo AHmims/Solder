@@ -6,7 +6,8 @@ import {ScrapResult} from "./types/scrapResult.type";
 const fs = require('fs-extra');
 import config from '../../solder.config';
 import {scrap_SSR_page} from "./scraper";
-import {json} from "stream/consumers";
+import {extensionConfig} from "../extensions/types/extensionConfig.type";
+import {queueJob} from "./types/queueJob.type";
 
 async function getQueuedItems(extensions: Array<Extension>): Promise<Array<Queue>> {
     let queuedItems: Array<Queue> = [];
@@ -44,33 +45,11 @@ async function runQueue(queuedItems: Array<Queue>): Promise<void> {
 
             let queuedItemResult: Array<Array<ScrapResult>> = [];
 
-            for (const jobName of Object.keys(itemJob)) {
-                const availableJobs = queuedItem.extension.config;
+            setInterval(async () => {
+                queuedItemResult = await deployQueue(itemJob, queuedItem.extension.config);
 
-                if (Object.keys(availableJobs).indexOf(jobName) === -1) {
-                    continue;
-                }
-
-                let jobScrapResult: Array<ScrapResult> = [];
-                // @ts-ignore
-                const jobConfig: item = availableJobs[jobName];
-                switch (jobConfig.scrapMethod) {
-                    case "SSR":
-                        // @ts-ignore
-                        jobScrapResult = await scrap_SSR_page(itemJob[jobName], jobConfig.fields);
-                        break;
-                    case "SPA":
-                        break;
-                    default:
-                        break;
-                }
-
-                if (jobScrapResult.length === 0) {
-                    continue;
-                }
-
-                queuedItemResult.push(jobScrapResult);
-            }
+                console.log(queuedItemResult);
+            }, queuedItem.interval * 60000);
 
             result.push(
                 {
@@ -90,4 +69,36 @@ async function runQueue(queuedItems: Array<Queue>): Promise<void> {
 export {
     getQueuedItems,
     runQueue
+}
+
+const deployQueue = async (itemJob: queueJob, availableJobs: extensionConfig): Promise<Array<Array<ScrapResult>>> => {
+    let queuedItemResult: Array<Array<ScrapResult>> = [];
+
+    for (const jobName of Object.keys(itemJob)) {
+        if (Object.keys(availableJobs).indexOf(jobName) === -1) {
+            continue;
+        }
+
+        let jobScrapResult: Array<ScrapResult> = [];
+        // @ts-ignore
+        const jobConfig: item = availableJobs[jobName];
+        switch (jobConfig.scrapMethod) {
+            case "SSR":
+                // @ts-ignore
+                jobScrapResult = await scrap_SSR_page(itemJob[jobName], jobConfig.fields);
+                break;
+            case "SPA":
+                break;
+            default:
+                break;
+        }
+
+        if (jobScrapResult.length === 0) {
+            continue;
+        }
+
+        queuedItemResult.push(jobScrapResult);
+    }
+
+    return queuedItemResult;
 }
