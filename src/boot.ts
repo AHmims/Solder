@@ -1,3 +1,5 @@
 import * as handler from './extensions/handler';
 
-console.log(handler.getExtensions());
+(async () => {
+    console.log(await handler.getExtensions());
+})();

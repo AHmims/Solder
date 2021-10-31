@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "tsc": "tsc *.ts --watch",
+    "tsc": "tsc --watch",
     "start": "node src/boot.js"
   },
   "keywords": [],
