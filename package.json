@@ -4,19 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watch": "babel --watch src --out-dir out --extensions '.ts'",
-    "build": "babel src --out-dir out --extensions '.ts'",
-    "tsc": "tsc",
-    "start": "node out/boot.js"
+    "tsc": "tsc *.ts --watch",
+    "start": "node src/boot.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/cli": "^7.16.0",
-    "@babel/core": "^7.16.0",
     "@babel/preset-env": "^7.16.0",
-    "@babel/preset-typescript": "^7.16.0",
     "@types/node": "^16.11.6",
     "typescript": "^4.4.4"
   },
@@ -24,6 +19,7 @@
     "@types/fs-extra": "^9.0.13",
     "axios": "^0.24.0",
     "cheerio": "^1.0.0-rc.10",
+    "dotenv": "^10.0.0",
     "fs-extra": "^10.0.0"
   }
 }

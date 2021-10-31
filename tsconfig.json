@@ -13,7 +13,8 @@
     "strict": true
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "solder.config.ts"
   ],
   "exclude": [
     "node_modules"
