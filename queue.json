@@ -1,7 +1,7 @@
 [
   {
     "extension": "electroplanet",
-    "interval": 0.1,
+    "interval": 30,
     "job": {
       "productPage": "https://www.electroplanet.ma/p2887461-sony-console-ps5-version-standard.html"
     }

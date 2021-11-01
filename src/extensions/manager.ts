@@ -3,6 +3,7 @@ import {Extension} from "./types/extension.type";
 const fs = require('fs-extra');
 import config from '../../solder.config';
 import * as path from "path";
+import logger from '../helpers/logger';
 
 export async function getExtensions(): Promise<Array<Extension>> {
     let extensions: Array<Extension> = [];
@@ -21,7 +22,8 @@ export async function getExtensions(): Promise<Array<Extension>> {
         }
 
     } catch (e) {
-        console.error(e);
+        console.error(e)
+        logger.error(e);
     }
 
     return extensions;
@@ -39,6 +41,7 @@ const fetchModule = async (fileName: string): Promise<Extension | null> => {
         }
     } catch (e) {
         console.error(e);
+        logger.error(e);
     }
 
     return extension;
