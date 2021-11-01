@@ -1,9 +1,10 @@
-import {field} from "../extensions/types/field.type";
-import {ScrapResult} from "./types/scrapResult.type";
+import {field} from '../extensions/types/field.type';
+import {ScrapResult} from './types/scrapResult.type';
 
-import axios from "axios";
+import axios from 'axios';
 import {JSDOM} from 'jsdom';
-import {deepTrim} from "../helpers/text";
+import {deepTrim} from '../helpers/text';
+import logger from '../helpers/logger';
 
 async function scrap_SSR_page(url: string, selectors: Array<field>): Promise<Array<ScrapResult>> {
     let result: Array<ScrapResult> = [];
@@ -29,6 +30,7 @@ async function scrap_SSR_page(url: string, selectors: Array<field>): Promise<Arr
 
     } catch (e) {
         console.error(e);
+        logger.error(e);
     }
 
     return result;
@@ -42,26 +44,31 @@ const getGenericData = (_dom: JSDOM, selector: field): ScrapResult | null => {
     let scrapResult: ScrapResult | null = null;
 
     try {
-        let element: Element | null;
+        let element: Element | null = _dom.window.document.querySelector(selector.value);
 
+        let data: string | boolean | null;
         switch (selector.type) {
-            case "class":
-                element = _dom.window.document.querySelector(selector.value);
+            case 'content':
+                if (element === null || element.textContent === null) {
+                    return scrapResult;
+                }
+
+                data = deepTrim(element.textContent);
+                break;
+            case 'exists':
+                data = element !== null;
                 break;
             default:
-                element = null;
-        }
-
-        if (element === null || element.textContent === null) {
-            return scrapResult;
+                data = null;
         }
 
         scrapResult = {
             field: selector.key,
-            data: deepTrim(element.textContent)
+            data
         }
     } catch (e) {
         console.error(e);
+        logger.error(e);
     }
 
 

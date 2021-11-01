@@ -8,6 +8,7 @@ import config from '../../solder.config';
 import {scrap_SSR_page} from "./scraper";
 import {extensionConfig} from "../extensions/types/extensionConfig.type";
 import {queueJob} from "./types/queueJob.type";
+import logger from '../helpers/logger';
 
 async function getQueuedItems(extensions: Array<Extension>): Promise<Array<Queue>> {
     let queuedItems: Array<Queue> = [];
@@ -30,6 +31,7 @@ async function getQueuedItems(extensions: Array<Extension>): Promise<Array<Queue
         }
     } catch (e) {
         console.error(e);
+        logger.error(e);
     }
 
     return queuedItems;
@@ -48,7 +50,7 @@ async function runQueue(queuedItems: Array<Queue>): Promise<void> {
             setInterval(async () => {
                 queuedItemResult = await deployQueue(itemJob, queuedItem.extension.config);
 
-                console.log(queuedItemResult);
+                logger.info(queuedItemResult);
             }, queuedItem.interval * 60000);
 
             result.push(
@@ -59,10 +61,9 @@ async function runQueue(queuedItems: Array<Queue>): Promise<void> {
             );
             queueCount++;
         }
-
-        console.log(JSON.stringify(result));
     } catch (e) {
         console.error(e);
+        logger.error(e);
     }
 }
 

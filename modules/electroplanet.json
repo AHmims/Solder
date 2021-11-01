@@ -7,14 +7,19 @@
       "scrapMethod": "SSR",
       "fields": [
         {
-          "type": "class",
+          "type": "content",
           "key": "name",
           "value": ".detail-product-info .page-title"
         },
         {
-          "type": "class",
+          "type": "content",
           "key": "price",
           "value": ".detail-product-info .price-wrapper"
+        },
+        {
+          "type": "exists",
+          "key": "inStock",
+          "value": ".stock-status.stock_status_30"
         }
       ]
     }

@@ -1,1 +1,1 @@
-export type fieldType = 'class';
+export type fieldType = 'content' | 'exists';
