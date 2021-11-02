@@ -10,13 +10,12 @@
     "noPropertyAccessFromIndexSignature": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "strict": true
+    "strict": true,
+    "outDir": "build",
+    "baseUrl": "src",
+    "rootDir": "./src",
+    "resolveJsonModule": true
   },
-  "include": [
-    "src/**/*",
-    "solder.config.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["./src/", "./src/modules/*.json"],
+  "exclude": ["node_modules"]
 }
