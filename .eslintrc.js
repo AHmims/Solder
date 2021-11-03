@@ -18,6 +18,7 @@ module.exports = {
         ObjectExpression: 1,
         ImportDeclaration: 1,
         MemberExpression: 1,
+        SwitchCase: 1,
       },
     ],
     'linebreak-style': ['error', 'windows'],

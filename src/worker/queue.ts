@@ -18,7 +18,7 @@ async function getQueuedItems(extensions: Array<Extension>): Promise<Array<Queue
     const jsonQueueList: Array<queueFile> = await fs.readJSON(config.QUEUE_FILE);
 
     for (const queueElement of jsonQueueList) {
-      const extension = extensions.find(extension => extension.id === queueElement.extension);
+      const extension = extensions.find((extension) => extension.id === queueElement.extension);
 
       if (extension === undefined) {
         continue;
@@ -27,7 +27,7 @@ async function getQueuedItems(extensions: Array<Extension>): Promise<Array<Queue
       queuedItems.push({
         extension,
         job: queueElement.job,
-        interval: queueElement.interval
+        interval: queueElement.interval,
       });
     }
   } catch (e) {
@@ -54,12 +54,10 @@ async function runQueue(queuedItems: Array<Queue>): Promise<void> {
         logger.info(queuedItemResult);
       }, queuedItem.interval * 60000);
 
-      result.push(
-        {
-          queue: `queue-${queueCount}`,
-          result: queuedItemResult
-        }
-      );
+      result.push({
+        queue: `queue-${queueCount}`,
+        result: queuedItemResult,
+      });
       queueCount++;
     }
   } catch (e) {
@@ -68,14 +66,11 @@ async function runQueue(queuedItems: Array<Queue>): Promise<void> {
   }
 }
 
-export {
-  getQueuedItems,
-  runQueue
-};
+export { getQueuedItems, runQueue };
 
 const deployQueue = async (
   itemJob: queueJob,
-  availableJobs: extensionConfig
+  availableJobs: extensionConfig,
 ): Promise<Array<Array<ScrapResult>>> => {
   const queuedItemResult: Array<Array<ScrapResult>> = [];
 
@@ -88,13 +83,13 @@ const deployQueue = async (
 
     const jobConfig: item = availableJobs[jobName];
     switch (jobConfig.scrapMethod) {
-    case 'SSR':
-      jobScrapResult = await scrap_SSR_page(itemJob[jobName], jobConfig.fields);
-      break;
-    case 'SPA':
-      break;
-    default:
-      break;
+      case 'SSR':
+        jobScrapResult = await scrap_SSR_page(itemJob[jobName], jobConfig.fields);
+        break;
+      case 'SPA':
+        break;
+      default:
+        break;
     }
 
     if (jobScrapResult.length === 0) {

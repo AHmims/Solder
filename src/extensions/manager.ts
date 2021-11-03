@@ -19,7 +19,6 @@ export async function getExtensions(): Promise<Array<Extension>> {
 
       extensions.push(extension);
     }
-
   } catch (e) {
     console.error(e);
     logger.error(e);
@@ -36,7 +35,7 @@ const fetchModule = async (fileName: string): Promise<Extension | null> => {
 
     extension = {
       id: path.parse(fileName).name,
-      ...jsonModule
+      ...jsonModule,
     };
   } catch (e) {
     console.error(e);

@@ -1,4 +1,4 @@
 export interface ScrapResult {
-    field: string,
-    data: string | boolean | null
+  field: string;
+  data: string | boolean | null;
 }
