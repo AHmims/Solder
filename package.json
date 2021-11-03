@@ -31,6 +31,7 @@
     "jsdom": "^18.0.0"
   },
 	"_moduleAliases": {
-		"#helpers": "build/helpers"
+		"#helpers": "build/helpers",
+		"#lib": "build/lib"
 	}
 }
