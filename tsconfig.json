@@ -14,7 +14,8 @@
     "outDir": "build",
     "baseUrl": "src",
     "rootDir": "./src",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+		"allowJs": true
   },
   "include": ["./src/", "./src/modules/*.json"],
   "exclude": ["node_modules"]
