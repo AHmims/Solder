@@ -1,12 +1,11 @@
-import { field } from '../lib/types/extensions/field.type';
-import { ScrapResult } from '../lib/types/worker/scrapResult.type';
+import { Field, ScrapResult } from '#lib/types';
 
 import axios from 'axios';
 import { JSDOM } from 'jsdom';
 import { deepTrim } from '../helpers/text';
 import logger from '../helpers/logger';
 
-async function scrap_SSR_page(url: string, selectors: Array<field>): Promise<Array<ScrapResult>> {
+async function scrap_SSR_page(url: string, selectors: Array<Field>): Promise<Array<ScrapResult>> {
   const result: Array<ScrapResult> = [];
 
   try {
@@ -37,7 +36,7 @@ async function scrap_SSR_page(url: string, selectors: Array<field>): Promise<Arr
 
 export { scrap_SSR_page };
 
-const getGenericData = (_dom: JSDOM, selector: field): ScrapResult | null => {
+const getGenericData = (_dom: JSDOM, selector: Field): ScrapResult | null => {
   let scrapResult: ScrapResult | null = null;
 
   try {

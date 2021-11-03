@@ -1,21 +1,16 @@
-import { Extension } from '../lib/types/extensions/extension.type';
-import { Queue } from '../lib/types/worker/Queue.type';
-import { item } from '../lib/types/extensions/item.type';
-import { ScrapResult } from '../lib/types/worker/scrapResult.type';
-
+import { Extension, Item, ExtensionConfig } from '#lib/types';
 import * as fs from 'fs-extra';
 import config from '../solder.config';
 import { scrap_SSR_page } from './scraper';
-import { extensionConfig } from '../lib/types/extensions/extensionConfig.type';
-import { queueJob } from '../lib/types/worker/queueJob.type';
 import logger from '../helpers/logger';
-import { queueFile } from '../lib/types/worker/queueFile.type';
+
+import { Queue, QueueFile, QueueJob, ScrapResult } from '#lib/types';
 
 async function getQueuedItems(extensions: Array<Extension>): Promise<Array<Queue>> {
   const queuedItems: Array<Queue> = [];
 
   try {
-    const jsonQueueList: Array<queueFile> = await fs.readJSON(config.QUEUE_FILE);
+    const jsonQueueList: Array<QueueFile> = await fs.readJSON(config.QUEUE_FILE);
 
     for (const queueElement of jsonQueueList) {
       const extension = extensions.find((extension) => extension.id === queueElement.extension);
@@ -69,8 +64,8 @@ async function runQueue(queuedItems: Array<Queue>): Promise<void> {
 export { getQueuedItems, runQueue };
 
 const deployQueue = async (
-  itemJob: queueJob,
-  availableJobs: extensionConfig,
+  itemJob: QueueJob,
+  availableJobs: ExtensionConfig,
 ): Promise<Array<Array<ScrapResult>>> => {
   const queuedItemResult: Array<Array<ScrapResult>> = [];
 
@@ -81,7 +76,7 @@ const deployQueue = async (
 
     let jobScrapResult: Array<ScrapResult> = [];
 
-    const jobConfig: item = availableJobs[jobName];
+    const jobConfig: Item = availableJobs[jobName];
     switch (jobConfig.scrapMethod) {
       case 'SSR':
         jobScrapResult = await scrap_SSR_page(itemJob[jobName], jobConfig.fields);

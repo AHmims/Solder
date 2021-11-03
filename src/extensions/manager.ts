@@ -1,4 +1,4 @@
-import { Extension } from '../lib/types/extensions/extension.type';
+import { Extension } from '#lib/types';
 import * as fs from 'fs-extra';
 import config from '../solder.config';
 import * as path from 'path';

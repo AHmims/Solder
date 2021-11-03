@@ -1,7 +1,7 @@
 // Improves the performance of accessing .env files.
 // Using Js instead of Ts because typing environment variables is a hassle.
 
-import { Indexable } from 'lib/interfaces/Indexable';
+import { Indexable } from '#lib/types/indexable';
 
 const cache: Indexable = {};
 
