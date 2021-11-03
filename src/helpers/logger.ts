@@ -14,7 +14,6 @@ const logger = pino(
   {
     name: 'solder',
     level: envy('LOGGING_LEVEL', 'silent') as string,
-    transport: { target: 'pino-pretty' },
   },
   logThrough,
 );

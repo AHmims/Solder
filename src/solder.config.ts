@@ -5,9 +5,11 @@ import envy from '#helpers/envy';
 
 dotenv.config();
 
+const __parent_dir = path.join(__dirname, '..');
+
 export default {
-  MODULES_DIRECTORY: path.join(__dirname, envy('MODULES_PATH') as string) as string,
-  QUEUE_FILE: path.join(__dirname, '..', envy('QUEUE_FILE') as string) as string,
-  LOGS_FILE: path.join(__dirname, '..', envy('LOGS_FILE') as string) as string,
-  SCRAP_RESULTS_FILE: path.join(__dirname, '..', envy('SCRAP_RESULTS_FILE') as string) as string,
+  MODULES_DIRECTORY: path.join(__parent_dir, envy('MODULES_PATH')),
+  QUEUE_FILE: path.join(__parent_dir, envy('QUEUE_FILE')),
+  LOGS_FILE: path.join(__parent_dir, envy('LOGS_FILE')),
+  SCRAP_RESULTS_FILE: path.join(__parent_dir, envy('SCRAP_RESULTS_FILE')),
 };
