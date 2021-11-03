@@ -1,5 +1,5 @@
 /node_modules
 /out
-*.js
+/build
 scrap-result.json
 logs/scrap-logs.json
