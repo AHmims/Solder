@@ -6,7 +6,8 @@
   "scripts": {
     "tsc": "tsc --watch",
     "start": "node build/boot.js",
-    "lint": "eslint . --fix"
+    "lint": "eslint . --fix",
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",
