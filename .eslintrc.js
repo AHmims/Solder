@@ -15,27 +15,30 @@ module.exports = {
       'error',
       2,
       {
-        'ObjectExpression': 1,
-        'ImportDeclaration': 1,
-        'MemberExpression': 1
-      }
+        ObjectExpression: 1,
+        ImportDeclaration: 1,
+        MemberExpression: 1,
+      },
     ],
-    'linebreak-style': ['error', 'unix'],
+    'linebreak-style': ['error', 'windows'],
     quotes: ['error', 'single'],
     semi: ['error', 'always'],
     'object-curly-spacing': [
       'error',
-      'always', {
-        'arraysInObjects': false,
-        'objectsInObjects': true,
-      }
+      'always',
+      {
+        arraysInObjects: false,
+        objectsInObjects: true,
+      },
     ],
     'max-len': [
-      'error', {
-        'ignoreComments': true,
-        'code': 100,
-        'ignoreUrls': true,
-        'ignoreRegExpLiterals': true
-      }]
+      'error',
+      {
+        ignoreComments: true,
+        code: 100,
+        ignoreUrls: true,
+        ignoreRegExpLiterals: true,
+      },
+    ],
   },
 };
