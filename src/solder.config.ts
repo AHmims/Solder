@@ -1,7 +1,7 @@
 /** Imports */
 import * as path from 'path';
 import * as dotenv from 'dotenv';
-import envy from 'helpers/envy';
+import envy from '#helpers/envy';
 
 dotenv.config();
 

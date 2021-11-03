@@ -1,9 +1,11 @@
 // Improves the performance of accessing .env files.
 // Using Js instead of Ts because typing environment variables is a hassle.
 
-const cache = {};
+import { Indexable } from 'lib/interfaces/Indexable';
 
-const envy = (key, defaultValue) => {
+const cache: Indexable = {};
+
+const envy = (key: string, defaultValue?: string) => {
   if (!(key in process.env)) {
     if (defaultValue) return defaultValue;
     throw new Error(`Key "${key}" is missing from process.env`);

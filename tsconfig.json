@@ -15,7 +15,10 @@
     "baseUrl": "src",
     "rootDir": "./src",
     "resolveJsonModule": true,
-		"allowJs": true
+		"esModuleInterop": true,
+		"paths": {
+			"#helpers/*": ["helpers/*"]
+		}
   },
   "include": ["./src/", "./src/modules/*.json"],
   "exclude": ["node_modules"]
