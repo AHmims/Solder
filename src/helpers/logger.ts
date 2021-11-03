@@ -2,6 +2,7 @@ import pino from 'pino';
 import * as childProcess from 'child_process';
 import * as stream from 'stream';
 import config from '../solder.config';
+import envy from './envy';
 
 // Environment variables
 const cwd = process.cwd();
@@ -9,7 +10,14 @@ const { env } = process;
 
 // Create a stream where the logs will be written
 const logThrough = new stream.PassThrough();
-const logger = pino({ name: 'solder' }, logThrough);
+const logger = pino(
+  {
+    name: 'solder',
+    level: envy('LOGGING_LEVEL', 'silent') as string,
+    transport: { target: 'pino-pretty' },
+  },
+  logThrough,
+);
 
 // Log to multiple files using a separate process
 const child = childProcess.spawn(
@@ -27,5 +35,6 @@ const child = childProcess.spawn(
 );
 
 logThrough.pipe(child.stdin);
+logThrough.pipe(process.stdout);
 
 export default logger;
