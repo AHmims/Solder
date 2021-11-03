@@ -1,5 +1,5 @@
 
 
 export enum ExtensionEnum {
-  electroplanet= "electroplanet"
+  electroplanet= 'electroplanet'
 }
