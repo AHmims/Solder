@@ -14,8 +14,14 @@
     "outDir": "build",
     "baseUrl": "src",
     "rootDir": "./src",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+		"esModuleInterop": true,
+		"paths": {
+			"#helpers/*": ["helpers/*"],
+			"#lib/*": ["lib/*"],
+			"#/*": ["./*"],
+		}
   },
-  "include": ["./src/", "./src/modules/*.json"],
+  "include": ["./src/"],
   "exclude": ["node_modules"]
 }

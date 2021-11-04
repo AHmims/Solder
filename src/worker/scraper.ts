@@ -1,18 +1,17 @@
-import { field } from '../lib/types/extensions/field.type';
-import { ScrapResult } from '../lib/types/worker/scrapResult.type';
-
-import axios from 'axios';
 import { JSDOM } from 'jsdom';
-import { deepTrim } from '../helpers/text';
-import logger from '../helpers/logger';
+import axios from 'axios';
 
-async function scrap_SSR_page(url: string, selectors: Array<field>): Promise<Array<ScrapResult>> {
+import { Field, ScrapResult } from '#lib/types';
+import { deepTrim } from '#helpers/text';
+import logger from '#helpers/logger';
+
+async function scrap_SSR_page(url: string, selectors: Array<Field>): Promise<Array<ScrapResult>> {
   const result: Array<ScrapResult> = [];
 
   try {
     const body = await axios.get(url, {
       headers: {
-        'Connection': 'keep-alive'
+        Connection: 'keep-alive',
       },
     });
 
@@ -27,7 +26,6 @@ async function scrap_SSR_page(url: string, selectors: Array<field>): Promise<Arr
 
       result.push(scrapResult);
     }
-
   } catch (e) {
     console.error(e);
     logger.error(e);
@@ -36,11 +34,9 @@ async function scrap_SSR_page(url: string, selectors: Array<field>): Promise<Arr
   return result;
 }
 
-export {
-  scrap_SSR_page
-};
+export { scrap_SSR_page };
 
-const getGenericData = (_dom: JSDOM, selector: field): ScrapResult | null => {
+const getGenericData = (_dom: JSDOM, selector: Field): ScrapResult | null => {
   let scrapResult: ScrapResult | null = null;
 
   try {
@@ -48,29 +44,28 @@ const getGenericData = (_dom: JSDOM, selector: field): ScrapResult | null => {
 
     let data: string | boolean | null;
     switch (selector.type) {
-    case 'content':
-      if (element === null || element.textContent === null) {
-        return scrapResult;
-      }
+      case 'content':
+        if (element === null || element.textContent === null) {
+          return scrapResult;
+        }
 
-      data = deepTrim(element.textContent);
-      break;
-    case 'exists':
-      data = element !== null;
-      break;
-    default:
-      data = null;
+        data = deepTrim(element.textContent);
+        break;
+      case 'exists':
+        data = element !== null;
+        break;
+      default:
+        data = null;
     }
 
     scrapResult = {
       field: selector.key,
-      data
+      data,
     };
   } catch (e) {
     console.error(e);
     logger.error(e);
   }
-
 
   return scrapResult;
 };
