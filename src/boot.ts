@@ -1,8 +1,8 @@
-require('module-alias/register');
+import 'module-alias/register';
 
 import * as manager from './extensions/manager';
-import * as queue from './worker/queue';
 import { runQueue } from './worker/queue';
+import * as queue from './worker/queue';
 
 (async () => {
   console.log('Initialising extensions...');

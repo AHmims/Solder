@@ -1,9 +1,9 @@
-import { Field, ScrapResult } from '#lib/types';
-
-import axios from 'axios';
 import { JSDOM } from 'jsdom';
-import { deepTrim } from '../helpers/text';
-import logger from '../helpers/logger';
+import axios from 'axios';
+
+import { Field, ScrapResult } from '#lib/types';
+import { deepTrim } from '#helpers/text';
+import logger from '#helpers/logger';
 
 async function scrap_SSR_page(url: string, selectors: Array<Field>): Promise<Array<ScrapResult>> {
   const result: Array<ScrapResult> = [];

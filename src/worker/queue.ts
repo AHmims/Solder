@@ -1,9 +1,9 @@
-import { Extension, Item, ExtensionConfig } from '#lib/types';
 import * as fs from 'fs-extra';
-import config from '../solder.config';
-import { scrap_SSR_page } from './scraper';
-import logger from '../helpers/logger';
 
+import config from '#/solder.config';
+import logger from '#helpers/logger';
+import { scrap_SSR_page } from './scraper';
+import { Extension, Item, ExtensionConfig } from '#lib/types';
 import { Queue, QueueFile, QueueJob, ScrapResult } from '#lib/types';
 
 async function getQueuedItems(extensions: Array<Extension>): Promise<Array<Queue>> {
