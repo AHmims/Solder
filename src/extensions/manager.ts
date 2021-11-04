@@ -1,8 +1,8 @@
 import { Extension } from '#lib/types';
 import * as fs from 'fs-extra';
-import config from '../solder.config';
+import config from '#solder_config';
 import * as path from 'path';
-import logger from '../helpers/logger';
+import logger from '#helpers/logger';
 
 export async function getExtensions(): Promise<Array<Extension>> {
   const extensions: Array<Extension> = [];

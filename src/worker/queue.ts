@@ -1,8 +1,8 @@
 import { Extension, Item, ExtensionConfig } from '#lib/types';
 import * as fs from 'fs-extra';
-import config from '../solder.config';
+import config from '#solder_config';
 import { scrap_SSR_page } from './scraper';
-import logger from '../helpers/logger';
+import logger from '#helpers/logger';
 
 import { Queue, QueueFile, QueueJob, ScrapResult } from '#lib/types';
 

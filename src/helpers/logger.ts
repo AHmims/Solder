@@ -1,7 +1,7 @@
 import pino from 'pino';
 import * as childProcess from 'child_process';
 import * as stream from 'stream';
-import config from '../solder.config';
+import config from '#solder_config';
 import envy from './envy';
 
 // Environment variables

@@ -34,6 +34,7 @@
   },
   "_moduleAliases": {
     "#helpers": "build/helpers",
-    "#lib": "build/lib"
+    "#lib": "build/lib",
+    "#solder_config": "build/solder.config"
   }
 }

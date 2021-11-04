@@ -18,7 +18,8 @@
 		"esModuleInterop": true,
 		"paths": {
 			"#helpers/*": ["helpers/*"],
-			"#lib/*": ["lib/*"]
+			"#lib/*": ["lib/*"],
+			"#solder_config": ["solder.config"]
 		}
   },
   "include": ["./src/"],
