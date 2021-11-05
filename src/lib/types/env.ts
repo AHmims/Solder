@@ -1,0 +1,1 @@
+export type EnvValue = string | number;

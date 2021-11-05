@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  solder-api:
+    build:
+      context: .
+      target: base
+    volumes:
+      - ./src:/home/node/solder/src
+      - ./modules:/home/node/solder/modules
+    container_name: solder-api
+    expose:
+      - '8080'
+    ports:
+      - '8080:8080'
+    command: npm run watch

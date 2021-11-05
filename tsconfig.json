@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+		"target": "ESNext",
+		"module": "commonjs",
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "exactOptionalPropertyTypes": true,
@@ -14,8 +16,11 @@
     "outDir": "build",
     "baseUrl": "src",
     "rootDir": "./src",
+		"skipLibCheck": true,
+		"moduleResolution": "node",
     "resolveJsonModule": true,
 		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
 		"paths": {
 			"#helpers/*": ["helpers/*"],
 			"#lib/*": ["lib/*"],
@@ -23,5 +28,5 @@
 		}
   },
   "include": ["./src/"],
-  "exclude": ["node_modules"]
+  "exclude": []
 }
