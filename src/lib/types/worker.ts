@@ -1,4 +1,4 @@
-import { Extension } from '.';
+import { Extension, Schema } from '.';
 
 export type QueueJob = {
   [key: string]: string;
@@ -21,3 +21,16 @@ export interface ScrapResult {
   field: string;
   data: string | boolean | null;
 }
+
+/**
+ * QueueSchema example.
+ * Does not account for the contents of child objects sadge.
+ */
+export const QueueRequestSchema: Schema = {
+  fields : {
+    extension: 'string',
+    interval: 'number',
+    job: 'object',
+  },
+  required: ['extension', 'interval', 'job']
+};
