@@ -1,4 +1,4 @@
-build:
+druid:
 	docker-compose build
 
 up:
