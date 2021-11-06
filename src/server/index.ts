@@ -1,7 +1,8 @@
 import envy from '#helpers/envy';
 import logger from '#helpers/logger';
 import cors from 'cors';
-import express, { Request, Response } from 'express';
+import express, { NextFunction, Request, Response } from 'express';
+import setupAll from './routes';
 
 const PORT = parseInt(envy('PORT', '8080'));
 
@@ -17,7 +18,9 @@ const start = () => {
     })
   );
 
-  app.use((err: Error, _: Request, res: Response) => {
+  setupAll(app);
+
+  app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
     return res.status(500).json({
       message:err.message
     });
