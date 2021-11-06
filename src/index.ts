@@ -1,3 +1,6 @@
 import 'module-alias/register';
 
-import '#/server';
+import start from '#/server';
+
+start();
+
