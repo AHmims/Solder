@@ -1,0 +1,37 @@
+version: '3.7'
+
+services:
+  solder-api:
+    build:
+      context: .
+      target: base
+    volumes:
+      - ./src:/home/node/solder/src
+      - ./modules:/home/node/solder/modules
+    container_name: solder-api
+    expose:
+      - '42069'
+    ports:
+      - '42069:42069'
+    command: npm run watch
+    networks:
+      - solder
+    depends_on:
+      - solder-redis
+
+  solder-redis:
+    image: 'redis:alpine'
+    command: redis-server /usr/local/etc/redis/redis.conf
+    ports:
+      - '6379:6379'
+    volumes:
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
+    container_name: solder-redis
+    environment:
+      - REDIS_REPLICATION_MODE=master
+    networks:
+      - solder
+
+networks:
+  solder:
+    driver: bridge

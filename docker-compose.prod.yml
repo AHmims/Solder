@@ -1,0 +1,7 @@
+version: '3.7'
+
+services:
+  solder-api:
+    build:
+      target: production
+      command: npm run start

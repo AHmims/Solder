@@ -14,7 +14,7 @@ const logThrough = new stream.PassThrough();
 const logger = pino(
   {
     name: 'solder',
-    level: envy('LOGGING_LEVEL', 'silent') as string,
+    level: envy('LOGGING_LEVEL', 'silent'),
   },
   logThrough,
 );

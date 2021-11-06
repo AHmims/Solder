@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+		"target": "ESNext",
+		"module": "commonjs",
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "exactOptionalPropertyTypes": true,
@@ -14,14 +16,21 @@
     "outDir": "build",
     "baseUrl": "src",
     "rootDir": "./src",
+		"skipLibCheck": true,
+		"moduleResolution": "node",
     "resolveJsonModule": true,
 		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
 		"paths": {
+      "#/*": ["./*"],
 			"#helpers/*": ["helpers/*"],
 			"#lib/*": ["lib/*"],
-			"#/*": ["./*"],
+			"#config/*": ["config/*"],
+			"#services/*": ["server/services/*"],
+			"#managers/*": ["server/managers/*"],
+			"#repositories/*": ["server/repositories/*"]
 		}
   },
   "include": ["./src/"],
-  "exclude": ["node_modules"]
+  "exclude": []
 }

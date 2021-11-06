@@ -1,6 +1,6 @@
 /node_modules
 /out
 /build
-scrap-result.log
-scrap-result.json
+/.idea
 logs/scrap-logs.json
+*.log

@@ -13,4 +13,5 @@ export default {
   QUEUE_FILE: path.join(__root_dir, envy('QUEUE_FILE')),
   LOGS_FILE: path.join(__root_dir, envy('LOGS_FILE')),
   SCRAP_RESULTS_FILE: path.join(__root_dir, envy('SCRAP_RESULTS_FILE')),
+  REDIS_URL: `redis://${envy('REDIS_USERNAME')}:${envy('REDIS_PASSWORD')}@${envy('REDIS_HOST')}:${envy('REDIS_PORT')}`
 };
