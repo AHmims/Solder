@@ -36,11 +36,16 @@
     "axios": "^0.24.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "jsdom": "^18.0.0"
+    "jsdom": "^18.0.0",
+    "redis": "^4.0.0-rc.3"
   },
   "_moduleAliases": {
+    "#": "build",
     "#helpers": "build/helpers",
     "#lib": "build/lib",
-    "#": "build"
+    "#config": "build/config",
+    "#services": "build/services",
+    "#managers": "build/managers",
+    "#repositories": "build/repositories"
   }
 }

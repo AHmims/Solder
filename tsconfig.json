@@ -22,9 +22,13 @@
 		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true,
 		"paths": {
+      "#/*": ["./*"],
 			"#helpers/*": ["helpers/*"],
 			"#lib/*": ["lib/*"],
-			"#/*": ["./*"],
+			"#config/*": ["config/*"],
+			"#services/*": ["services/*"],
+			"#managers/*": ["managers/*"],
+			"#repositories/*": ["repositories/*"]
 		}
   },
   "include": ["./src/"],
