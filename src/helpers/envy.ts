@@ -1,20 +1,18 @@
 // Improves the performance of accessing .env files.
 
-import { EnvValue, Indexable } from '#lib/types';
+const cache: { [key:string]: string} = {};
 
-const cache: Indexable = {};
-
-const envy = (key: string, defaultValue?: EnvValue): EnvValue=> {
-  if (!(key in process.env)) {
+const envy = (key: string, defaultValue?: string)=> {
+  if (!(key in process.env) || typeof process.env[key] === undefined) {
     if (defaultValue) return defaultValue;
     throw new Error(`Key "${key}" is missing from process.env`);
   }
 
-  if (cache[key]) return cache[key] as EnvValue;
+  if (!(key in cache)) {
+    cache[key] = <string>process.env[key];
+  }
 
-  cache[key] = process.env[key];
-
-  return process.env[key] as EnvValue;
+  return cache[key];
 };
 
 export default envy;
