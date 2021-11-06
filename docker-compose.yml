@@ -17,11 +17,11 @@ services:
     networks:
       - solder
     depends_on:
-      - redis
+      - solder-redis
 
   solder-redis:
     image: 'redis:alpine'
-    command: redis-server /usr/local/etc/redis/redis.conf --requirepass tHatOnETimeIWasReincARnaTeDAsAcat
+    command: redis-server /usr/local/etc/redis/redis.conf
     ports:
       - '6379:6379'
     volumes:
@@ -34,3 +34,4 @@ services:
 
 networks:
   solder:
+    driver: bridge
