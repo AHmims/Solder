@@ -5,10 +5,7 @@ import { isSchema, Schema } from '#lib/types';
  * TypeGuards at runtime and this was the cleanest solution I could think of without
  * adding more dependencies.
  *
- * However, this solution requires that we define schemas alongside the usual interfaces/types.
  * Check lib/types/worker.ts for an example Queue validation Schema.
- *
- * TODO: depth was added just needs to be tested
  */
 
 const required = (object: Record<string, unknown>, required: string[]) => {
