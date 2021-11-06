@@ -30,8 +30,11 @@ export const QueueRequestSchema: Schema = {
   fields : {
     extension: 'string',
     interval: 'number',
-    job: 'object',
-    placeholder: 'schema'
+    job: {
+      fields: {
+        productPage: 'string'
+      }
+    }
   },
-  required: ['extension', 'interval', 'job', 'placeholder']
+  required: ['extension', 'interval', 'job']
 };

@@ -27,15 +27,14 @@ export const validate = (object: Record<string, unknown>, model: Schema) => {
   }
 
   for (const key of Object.keys(object)) {
-    if (model.fields[key] === undefined || typeof object[key] !== model.fields[key]) {
-      return false;
+
+    if (isSchema(model.fields[key] as Record<string, unknown>))  {
+      if (!validate(object[key] as Record<string, unknown>, model.fields[key] as Schema))
+        return false;
     }
 
-    if (isSchema(model.fields[key])) {
-      if (!validate(object[key] as Record<string, unknown>, model.fields[key] as Schema)) {
-        return false;
-      }
-    }
+    else if (model.fields[key] === undefined || typeof object[key] !== model.fields[key]) 
+      return false;
   }
 
   return true;

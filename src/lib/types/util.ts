@@ -3,7 +3,7 @@ export type Schema = {
   required?: string[]
 }
 
-export const isSchema = (model: any): boolean => {
+export const isSchema = (model: Record<string, unknown>): boolean => {
   if (typeof model !== 'object') {
     return false;
   }
