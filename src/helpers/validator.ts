@@ -8,7 +8,7 @@ import { isSchema, Schema } from '#lib/types';
  * However, this solution requires that we define schemas alongside the usual interfaces/types.
  * Check lib/types/worker.ts for an example Queue validation Schema.
  *
- * TODO: add more depth to validation by validating child objects.
+ * TODO: depth was added just needs to be tested
  */
 
 const required = (object: Record<string, unknown>, required: string[]) => {
