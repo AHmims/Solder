@@ -31,6 +31,7 @@ export const QueueRequestSchema: Schema = {
     extension: 'string',
     interval: 'number',
     job: 'object',
+    placeholder: 'schema'
   },
-  required: ['extension', 'interval', 'job']
+  required: ['extension', 'interval', 'job', 'placeholder']
 };

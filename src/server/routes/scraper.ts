@@ -3,9 +3,9 @@ import { QueueRequestSchema } from '#lib/types';
 import { Express } from 'express';
 
 const setup = (app: Express) => {
-  app.post('/api/queue', async (req, res, next) => {
+  app.post('/api/queue', (req, res, next) => {
     try {
-      const status = await validate(req.body, QueueRequestSchema);
+      const status = validate(req.body, QueueRequestSchema);
       if (!status) throw new Error('Invalid body.');
 
       return res.json(req.body);
