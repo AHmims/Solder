@@ -10,7 +10,7 @@ services:
       - ./modules:/home/node/solder/modules
     container_name: solder-api
     expose:
-      - '8080'
+      - '42069'
     ports:
-      - '8080:8080'
+      - '42069:42069'
     command: npm run watch

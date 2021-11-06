@@ -4,7 +4,7 @@ import cors from 'cors';
 import express, { NextFunction, Request, Response } from 'express';
 import setupAll from './routes';
 
-const PORT = parseInt(envy('PORT', '8080'));
+const PORT = parseInt(envy('PORT', '42069'));
 
 const start = () => {
   const app = express();
@@ -26,7 +26,7 @@ const start = () => {
       message:err.message
     });
   });
-	
+
   app.listen(PORT, '0.0.0.0', () => {
     logger.info(`SolderAPI listening on port: ${PORT}`);
   });
