@@ -3,6 +3,7 @@ FROM node as base
 WORKDIR /home/node/solder
 
 COPY package.json ./
+COPY yarn.lock ./
 
 RUN npm i
 
