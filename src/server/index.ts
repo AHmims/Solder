@@ -4,7 +4,7 @@ import cors from 'cors';
 import express, { NextFunction, Request, Response } from 'express';
 import setupAll from './routes';
 
-const PORT = parseInt(envy('PORT', '42069'));
+const PORT = parseInt(envy('APPLICATION_PORT', '42069'));
 
 const start = () => {
   const app = express();
