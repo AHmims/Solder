@@ -14,7 +14,7 @@
 <div align="center">
     <h3 align="center">Solder</h3>
     <p align="center">
-        Solder is an ambitious peace of software that'll take you into an unforgettable journey 
+        Solder is an ambitious piece of software that'll take you on an unforgettable journey 
         <br />
         <br />
         <a href="https://github.com/ahmims/solder/issues">Report Bug</a>
@@ -25,19 +25,18 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+The project doesn't have a clear roadmap onto what it could possibly grow up to be as of yet, we have
+ideas and speculations but nothing guaranteed.
 
-As of writing this, the project doesn't have a clear roadmap onto what this could possibly grow up to be, we have
-ideas and speculations but nothing guaranteed yet.
+For the time being, it provides a web scraper that takes a .json file containing _module data, scraping interval, & product pages_
+as input and spews out the requested information on a defined time interval _(hopefully)_.
 
-What's available now is a scrapping script that takes an input information like what page to scrap and how periodically 
-do so and expect the results to show up _(hopefully)_.
-
-Here's what to come when it comes to the script:
+Current plans for the project:
 * A seamless experience by providing some kind of interface that enables the normal user to interact with this
-* Have notifications support to warn the user when a said action is triggered
+* Have notifications support to warn the user when a said action is triggered.
 
-The bigger goal;
-* A 90s metaverse
+The bigger goal:
+* A 90s metaverse.
 
 
 <!-- BUILT WITH -->
@@ -70,7 +69,8 @@ Pull this repo locally via
    ```sh
    make up
    ```
-
+   
+By default, the webserver should be up on port 42069.
 That's all
 
 
