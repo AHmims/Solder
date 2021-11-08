@@ -3,7 +3,16 @@
     "extension": "electroplanet",
     "interval": 0.1,
     "job": {
-      "productPage": "https://www.electroplanet.ma/p2887461-sony-console-ps5-version-standard.html"
+      "productPage": {
+        "url": "https://www.electroplanet.ma/p2887461-sony-console-ps5-version-standard.html",
+        "notification": {
+          "type": "webhook",
+          "config": {
+            "url": "https://maker.ifttt.com/trigger/Solder/json/with/key/b52ZbRQZXtJWalZah6Pt_-",
+            "method": "POST"
+          }
+        }
+      }
     }
   }
 ]

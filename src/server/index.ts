@@ -1,10 +1,10 @@
-import envy from '#helpers/envy';
 import logger from '#helpers/logger';
 import cors from 'cors';
 import express, { NextFunction, Request, Response } from 'express';
 import setupAll from './routes';
+import config from '#/solder.config';
 
-const PORT = parseInt(envy('APPLICATION_PORT', '42069'));
+const PORT = config.APPLICATION_PORT;
 
 const start = () => {
   const app = express();

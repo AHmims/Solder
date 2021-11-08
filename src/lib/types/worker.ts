@@ -24,7 +24,6 @@ export interface ScrapResult {
 
 /**
  * QueueSchema example.
- * Does not account for the contents of child objects sadge.
  */
 export const QueueRequestSchema: Schema = {
   fields : {

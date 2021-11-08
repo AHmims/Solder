@@ -45,8 +45,8 @@
     "#helpers": "build/helpers",
     "#lib": "build/lib",
     "#config": "build/config",
-    "#services": "build/server/services",
-    "#managers": "build/server/managers",
-    "#repositories": "build/server/repositories"
+    "#services": "build/services",
+    "#managers": "build/managers",
+    "#repositories": "build/repositories"
   }
 }
