@@ -3,7 +3,6 @@ import * as stream from 'stream';
 import pino from 'pino';
 
 import config from '#/solder.config';
-import envy from './envy';
 
 // Environment variables
 const cwd = process.cwd();
@@ -14,7 +13,7 @@ const logThrough = new stream.PassThrough();
 const logger = pino(
   {
     name: 'solder',
-    level: envy('LOGGING_LEVEL', 'silent'),
+    level: config.LOGGING_LEVEL,
   },
   logThrough,
 );
