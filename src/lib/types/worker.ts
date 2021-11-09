@@ -1,8 +1,17 @@
 import { Extension, Schema } from '.';
 
+export type NotificationConfig = {
+  'type': string,
+  config: Record<string, unknown>
+};
+
+export type JobConfig = {
+  url: string,
+  notification?: NotificationConfig
+};
+
 export type QueueJob = {
-  [key: string]: string;
-  productPage?: string;
+  [key: string]: JobConfig;
 };
 
 export type QueueFile = {
@@ -26,14 +35,14 @@ export interface ScrapResult {
  * QueueSchema example.
  */
 export const QueueRequestSchema: Schema = {
-  fields : {
+  fields: {
     extension: 'string',
     interval: 'number',
     job: {
       fields: {
-        productPage: 'string'
-      }
-    }
+        productPage: 'string',
+      },
+    },
   },
-  required: ['extension', 'interval', 'job']
+  required: ['extension', 'interval', 'job'],
 };

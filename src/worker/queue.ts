@@ -79,8 +79,7 @@ const deployQueue = async (
     const jobConfig: Item = availableJobs[jobName];
     switch (jobConfig.scrapMethod) {
       case 'SSR':
-        //TODO-Adapt this shit to the new QUEUE.json structure
-        jobScrapResult = await scrap_SSR_page(itemJob[jobName], jobConfig.fields);
+        jobScrapResult = await scrap_SSR_page(itemJob[jobName].url, jobConfig.fields);
         break;
       case 'SPA':
         break;
