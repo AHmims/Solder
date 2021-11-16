@@ -63,6 +63,4 @@ const prepareSubComponent = (): SubComponentBuilder => {
   return new SubComponentBuilder();
 };
 
-export {
-  prepareSubComponent,
-};
+export default prepareSubComponent;

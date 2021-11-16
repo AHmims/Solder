@@ -49,6 +49,4 @@ const prepareEmbedAuthor = (): EmbedAuthorBuilder => {
   return new EmbedAuthorBuilder();
 };
 
-export {
-  prepareEmbedAuthor,
-};
+export default prepareEmbedAuthor;

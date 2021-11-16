@@ -42,6 +42,4 @@ const prepareEmbedFooter = (): EmbedFooterBuilder => {
   return new EmbedFooterBuilder();
 };
 
-export {
-  prepareEmbedFooter,
-};
+export default prepareEmbedFooter;

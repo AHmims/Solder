@@ -70,6 +70,4 @@ const prepareMessage = (): MessageBuilder => {
   return new MessageBuilder();
 };
 
-export {
-  prepareMessage
-};
+export default prepareMessage;

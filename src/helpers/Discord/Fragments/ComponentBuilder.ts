@@ -5,7 +5,7 @@ class ComponentBuilder {
 
   constructor() {
     this._componentObject = {
-      type: 0,
+      type: 1,
       components: [],
     };
   }
@@ -42,6 +42,4 @@ const prepareComponent = (): ComponentBuilder => {
   return new ComponentBuilder();
 };
 
-export {
-  prepareComponent,
-};
+export default prepareComponent;

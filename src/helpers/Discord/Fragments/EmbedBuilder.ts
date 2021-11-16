@@ -105,6 +105,4 @@ const prepareEmbed = (): EmbedBuilder => {
   return new EmbedBuilder();
 };
 
-export {
-  prepareEmbed,
-};
+export default prepareEmbed;

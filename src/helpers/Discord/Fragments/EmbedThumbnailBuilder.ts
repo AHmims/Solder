@@ -35,6 +35,4 @@ const prepareEmbedThumbnail = (): EmbedThumbnailBuilder => {
   return new EmbedThumbnailBuilder();
 };
 
-export {
-  prepareEmbedThumbnail,
-};
+export default prepareEmbedThumbnail;

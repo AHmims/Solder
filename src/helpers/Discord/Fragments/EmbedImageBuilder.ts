@@ -35,6 +35,4 @@ const prepareEmbedImage = (): EmbedImageBuilder => {
   return new EmbedImageBuilder();
 };
 
-export {
-  prepareEmbedImage,
-};
+export default prepareEmbedImage;
