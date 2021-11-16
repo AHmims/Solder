@@ -5,6 +5,8 @@ import { prepareEmbedAuthor } from '#helpers/Discord/Fragments/EmbedAuthorBuilde
 import { prepareEmbedThumbnail } from '#helpers/Discord/Fragments/EmbedThumbnailBuilder';
 import { prepareEmbedFooter } from '#helpers/Discord/Fragments/EmbedFooterBuilder';
 import { prepareEmbedField } from '#helpers/Discord/Fragments/EmbedFieldBuilder';
+import { prepareSubComponent } from '#helpers/Discord/Fragments/SubComponentBuilder';
+import { prepareComponent } from '#helpers/Discord/Fragments/ComponentBuilder';
 
 export {
   prepareMessage,
@@ -14,4 +16,6 @@ export {
   prepareEmbedThumbnail,
   prepareEmbedFooter,
   prepareEmbedField,
+  prepareSubComponent,
+  prepareComponent,
 };
