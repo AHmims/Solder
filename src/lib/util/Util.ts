@@ -1,11 +1,12 @@
+import { ColorResolvable } from '../types/discord';
 import { Colors } from './Constants';
 
 export class Util extends null {
-  static resolveColor(color: string | number[] | number) {
+  static resolveColor(color: ColorResolvable) {
     if (typeof color === 'string') {
       if (color === 'RANDOM') return Math.floor(Math.random() * (0xffffff + 1));
       if (color === 'DEFAULT') return 0;
-      color = Colors[color] ?? parseInt(color.replace('#', ''),16);
+      color = Colors[color] ?? parseInt(color.replace('#', ''), 16);
     } else if (Array.isArray(color)) {
       color = (color[0] << 16) + (color[1] << 8) + color[2];
     }
@@ -16,7 +17,7 @@ export class Util extends null {
     return color;
   }
 
-  static cloneObject(object:Record<string, unknown>): Record<string, unknown> {
+  static cloneObject(object: Record<string, unknown>): Record<string, unknown> {
     return Object.assign(Object.create(object), object);
   }
 
@@ -24,11 +25,10 @@ export class Util extends null {
     data: unknown,
     error = Error,
     message = `Expected string, got ${data} instead.`,
-    nullable = true
-  ): string
-  {
+    nullable = true,
+  ): string {
     if (typeof data !== 'string') throw new error(message);
-    if (!nullable && data.length === 0) throw new error(); 
+    if (!nullable && data.length === 0) throw new error();
     return data;
   }
 }
