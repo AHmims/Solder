@@ -29,10 +29,10 @@ export interface MinifiedEmbed {
   description?: string;
   timestamp: Date;
   url?: string;
-  author: EmbedAuthor;
-  image: EmbedImage;
-  thumbnail: EmbedThumbnail;
-  footer: EmbedFooter;
+  author?: EmbedAuthor;
+  image?: EmbedImage;
+  thumbnail?: EmbedThumbnail;
+  footer?: EmbedFooter;
 }
 
 export interface Embed {
@@ -41,10 +41,10 @@ export interface Embed {
   description: string | undefined;
   timestamp: Date;
   url: string | undefined;
-  author: EmbedAuthor;
-  image: EmbedImage;
-  thumbnail: EmbedThumbnail;
-  footer: EmbedFooter;
+  author: EmbedAuthor | undefined;
+  image: EmbedImage | undefined;
+  thumbnail: EmbedThumbnail | undefined;
+  footer: EmbedFooter | undefined;
   fields: EmbedField[];
 }
 
