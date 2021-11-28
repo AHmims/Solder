@@ -1,0 +1,60 @@
+{
+  "username": "username",
+  "avatar_url": "avatar url",
+  "content": "kqsdjlkqsjdlkjqslkdjqsldkjlqskjdlkjkl",
+  "tts": false,
+  "embeds": [
+    {
+      "title": "embed title",
+      "color": 16741749,
+      "description": "embed desciption",
+      "timestamp": "2021-11-19T07:37:00.000Z",
+      "url": "embed title url",
+      "author": {
+        "name": "Author name",
+        "url": "Author url",
+        "icon_url": "auther img url"
+      },
+      "image": {
+        "url": "embed body img url"
+      },
+      "thumbnail": {
+        "url": "embed thumbnail img url"
+      },
+      "footer": {
+        "text": "embed footer text",
+        "icon_url": "embed footer img url"
+      },
+      "fields": [
+        {
+          "name": "field_1 title",
+          "value": "field_1 value",
+          "inline": true
+        },
+        {
+          "name": "field_2 title",
+          "value": "field_2 value"
+        }
+      ]
+    }
+  ],
+  "components": [
+    {
+      "type": 1,
+      "components": [
+        {
+          "type": 2,
+          "style": 5,
+          "label": "button_1",
+          "url": "button_1_url"
+        },
+        {
+          "type": 2,
+          "style": 5,
+          "label": "button_2",
+          "url": "button_2_url"
+        }
+      ]
+    }
+  ]
+}
