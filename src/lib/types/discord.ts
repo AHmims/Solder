@@ -18,7 +18,7 @@ export type EmbedImage = {
 }
 
 export type EmbedAuthor = {
-  name?: string;
+  name: string;
   url?: string;
   iconUrl?: string;
 }
@@ -29,7 +29,7 @@ export interface MinifiedEmbed {
   description?: string;
   timestamp: Date;
   url?: string;
-  author?: EmbedAuthor;
+  author: EmbedAuthor;
   image?: EmbedImage;
   thumbnail?: EmbedThumbnail;
   footer?: EmbedFooter;
@@ -41,7 +41,7 @@ export interface Embed {
   description: string | undefined;
   timestamp: Date;
   url: string | undefined;
-  author: EmbedAuthor | undefined;
+  author: EmbedAuthor;
   image: EmbedImage | undefined;
   thumbnail: EmbedThumbnail | undefined;
   footer: EmbedFooter | undefined;
@@ -90,5 +90,7 @@ export type ColorResolvable =
   | 'RED'
   | 'QUASI_BLACK'
   | 'RANDOM'
+  | 'PURPLE'
+  | string
   | number
   | number[];

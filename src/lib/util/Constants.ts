@@ -3,9 +3,18 @@
 export const Colors: Record<string, number> = {
   DEFAULT: 0x000000,
   WHITE: 0xffffff,
-  GREEN: 0x57f287,
-  BLUE: 0x3498db,
-  ORANGE: 0xe67e22,
-  RED: 0xed4245,
-  QUASI_BLACK: 0x23272
+  GREEN: 0x8fd6a5,
+  BLUE: 0x8fd2ff,
+  ORANGE: 0xf8a444,
+  RED: 0xe46653,
+  QUASI_BLACK: 0x141414,
+  PURPLE: 0xcb83fb,
+};
+
+export const LogsColors: Record<string, number> = {
+  INFO: Colors['WHITE'],
+  ERROR: Colors['RED'],
+  WARNING: Colors['ORANGE'],
+  FATAL: Colors['QUASI_BLACK'],
+  DEBUG: Colors['PURPLE'],
 };
