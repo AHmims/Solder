@@ -2,63 +2,74 @@ export type EmbedField = {
   name: string;
   value: string;
   inline?: boolean;
-};
+}
 
 export type EmbedFooter = {
   text?: string;
   iconUrl?: string;
-};
+}
 
 export type EmbedThumbnail = {
   url?: string;
-  height?: number;
-  width?: number;
-};
+}
 
 export type EmbedImage = {
   url?: string;
-  height?: number;
-  width?: number;
-};
+}
 
 export type EmbedAuthor = {
   name?: string;
   url?: string;
   iconUrl?: string;
-};
+}
 
-export type EmbedVideo = {
-  url: string;
-  proxyURL: string;
-  height: number;
-  width: number;
-};
+export interface MinifiedEmbed {
+  title?: string;
+  color: ColorResolvable;
+  description?: string;
+  timestamp: Date;
+  url?: string;
+  author: EmbedAuthor;
+  image: EmbedImage;
+  thumbnail: EmbedThumbnail;
+  footer: EmbedFooter;
+}
 
 export interface Embed {
-  title?: string | null;
-  color?: ColorResolvable | null;
-  description?: string | null;
-  timestamp?: Date | number | null;
-  url?: string | null;
-  fields?: EmbedField[] | null;
-  author?: EmbedAuthor | null;
-  thumbnail?: EmbedThumbnail | null;
-  image?: EmbedImage | null;
-  video?: EmbedVideo | null;
-  footer?: EmbedFooter | null;
+  title: string | undefined;
+  color: ColorResolvable;
+  description: string | undefined;
+  timestamp: Date;
+  url: string | undefined;
+  author: EmbedAuthor;
+  image: EmbedImage;
+  thumbnail: EmbedThumbnail;
+  footer: EmbedFooter;
+  fields: EmbedField[];
 }
 
 export interface SubComponent {
-  type: number;
+  'type': number;
   style: number;
   label: string;
   url?: string;
   customId?: string;
 }
 
+export interface MinifiedComponent {
+  'type': number;
+}
+
 export interface Component {
-  type: number;
+  'type': number;
   components: SubComponent[];
+}
+
+export interface MinifiedDiscordMessage {
+  username: string;
+  avatarUrl: string;
+  content: string;
+  tts?: boolean;
 }
 
 export interface DiscordMessage {
@@ -70,4 +81,14 @@ export interface DiscordMessage {
   components: Component[];
 }
 
-export type ColorResolvable = string | number | number[];
+export type ColorResolvable =
+  'DEFAULT'
+  | 'WHITE'
+  | 'GREEN'
+  | 'BLUE'
+  | 'ORANGE'
+  | 'RED'
+  | 'QUASI_BLACK'
+  | 'RANDOM'
+  | number
+  | number[];

@@ -1,11 +1,12 @@
-import { ColorResolvable } from '../types/discord';
-import { Colors } from './Constants';
+import { ColorResolvable } from '#/lib/types/discord';
+import { Colors } from '#/lib/util/Constants';
 
-export class Util extends null {
+export class Util {
   static resolveColor(color: ColorResolvable) {
     if (typeof color === 'string') {
       if (color === 'RANDOM') return Math.floor(Math.random() * (0xffffff + 1));
       if (color === 'DEFAULT') return 0;
+
       color = Colors[color] ?? parseInt(color.replace('#', ''), 16);
     } else if (Array.isArray(color)) {
       color = (color[0] << 16) + (color[1] << 8) + color[2];
@@ -29,6 +30,7 @@ export class Util extends null {
   ): string {
     if (typeof data !== 'string') throw new error(message);
     if (!nullable && data.length === 0) throw new error();
+
     return data;
   }
 }

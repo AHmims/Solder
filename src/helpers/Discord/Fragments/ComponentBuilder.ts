@@ -1,19 +1,13 @@
-import { Component, SubComponent } from '#lib/types/discord';
+import { Component, MinifiedComponent, SubComponent } from '#lib/types/discord';
 
-class ComponentBuilder {
+export default class ComponentBuilder {
   private _componentObject: Component;
 
-  constructor() {
+  constructor(componentObject: MinifiedComponent) {
     this._componentObject = {
-      type: 1,
+      type: componentObject.type,
       components: [],
     };
-  }
-
-  setType(type: number | null = null) {
-    this._componentObject.type = type ?? 0;
-
-    return this;
   }
 
   appendSubComponent(subComponent: SubComponent) {
@@ -23,7 +17,11 @@ class ComponentBuilder {
   }
 
   build(): Component {
-    return this._componentObject;
+    return this.componentObject;
+  }
+
+  json(): string {
+    return JSON.stringify(this.componentObject);
   }
 
   /**
@@ -37,9 +35,3 @@ class ComponentBuilder {
     this._componentObject = value;
   }
 }
-
-const prepareComponent = (): ComponentBuilder => {
-  return new ComponentBuilder();
-};
-
-export default prepareComponent;

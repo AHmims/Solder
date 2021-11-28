@@ -1,41 +1,18 @@
-import { Component, DiscordMessage, Embed } from '#lib/types/discord';
+import { Component, DiscordMessage, Embed, MinifiedDiscordMessage } from '#lib/types/discord';
+import { Util } from '#lib/util/Util';
 
-class MessageBuilder {
+export default class MessageBuilder {
   private _messageObject: DiscordMessage;
 
-  constructor() {
+  constructor(messageObject: MinifiedDiscordMessage) {
     this._messageObject = {
-      username: '',
-      avatarUrl: '',
-      content: '',
-      tts: false,
+      username: Util.checkString(messageObject.username),
+      avatarUrl: Util.checkString(messageObject.avatarUrl),
+      content: Util.checkString(messageObject.content),
+      tts: messageObject.tts ?? false,
       embeds: [],
       components: [],
     };
-  }
-
-  setUsername(username: string | null = null) {
-    this._messageObject.username = username ?? '';
-
-    return this;
-  }
-
-  setAvatarUrl(avatarUrl: string | null = null) {
-    this._messageObject.avatarUrl = avatarUrl ?? '';
-
-    return this;
-  }
-
-  setContent(content: string | null = null) {
-    this._messageObject.content = content ?? '';
-
-    return this;
-  }
-
-  isTTS(isTTs = false) {
-    this._messageObject.tts = isTTs;
-
-    return this;
   }
 
   appendEmbed(embed: Embed) {
@@ -51,7 +28,11 @@ class MessageBuilder {
   }
 
   build(): DiscordMessage {
-    return this._messageObject;
+    return this.messageObject;
+  }
+
+  json(): string {
+    return JSON.stringify(this.messageObject);
   }
 
   /**
@@ -65,9 +46,3 @@ class MessageBuilder {
     this._messageObject = value;
   }
 }
-
-const prepareMessage = (): MessageBuilder => {
-  return new MessageBuilder();
-};
-
-export default prepareMessage;
